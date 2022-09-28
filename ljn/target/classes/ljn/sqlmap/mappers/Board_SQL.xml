@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.sqlmap.mappers.Board_SQL">
+
+<resultMap type="board" id="boardResult">
+      <result property="boardNo" column="boardNo" />
+      <result property="userId" column="userId" />
+      <result property="title" column="title" />
+      <result property="content" column="content" />
+      <result property="createDate" column="createDate" />
+      <result property="boardType" column="boardType" />
+</resultMap>  
+
+	<insert id="boardInsert" parameterType="ljn.service.BoardVO">
+		INSERT INTO ljn_board VALUES(#{boardNo}, #{userId}, #{title}, #{content}, now(), #{boardType})
+	</insert>
+	
+	<select id="selectBoardList" resultMap="boardResult">	
+		SELECT b.* FROM (
+		SELECT a.* FROM(
+		SELECT * FROM ljn_board) a ) b ORDER BY boardType ASC, boardNo DESC 
+		LIMIT #{startIndex},#{endIndex}
+	</select>
+	
+	<select id="boardListTotal" resultType="int">
+		SELECT COUNT(*) FROM ljn_board
+	</select>
+	
+	<select id="selectBoard" resultMap="boardResult">
+		SELECT * FROM ljn_board WHERE boardNo=#{boardNo}
+	</select>
+	
+	<select id="myBoardTotal" resultType="int">
+		select count(*) from ljn_board where userId=#{userId}
+	</select>
+	
+	<select id="myBoardList" resultMap="boardResult">
+		SELECT b.* FROM (
+		SELECT a.* FROM(
+		SELECT * FROM ljn_board) a ) b where userId=#{userId} ORDER BY boardType ASC, boardNo DESC
+		LIMIT #{startIndex},#{endIndex}
+	</select>
+	
+	<update id="boardUpdate">
+		UPDATE ljn_board SET boardType=#{boardType}, title=#{title}, content=#{content} WHERE boardNo=#{boardNo}
+	</update>
+	
+	<delete id="boardDelete">
+		DELETE FROM ljn_board WHERE boardNo=#{boardNo}
+	</delete>
+    
+</mapper>

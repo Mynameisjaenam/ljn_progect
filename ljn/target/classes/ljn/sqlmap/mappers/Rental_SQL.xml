@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.sqlmap.mappers.Rental_SQL">
+
+<resultMap type="rental" id="rentalResult">
+	  <result property="rentalNo" column="rentalNo" />
+      <result property="userId" column="userId" />
+      <result property="userName" column="userName" />
+      <result property="userPhone" column="userPhone" />
+      <result property="droneNo" column="droneNo" />
+      <result property="rentalSDate" column="rentalSDate" />
+      <result property="rentalEDate" column="rentalEDate" />
+      <result property="price" column="price" />
+      <result property="droneNo" column="droneNo" />
+      <result property="droneName" column="droneName" />
+</resultMap>
+
+	<insert id="insertRental" parameterType="ljn.service.RentalVO">
+		INSERT INTO ljn_rental
+		(rentalNo, userId, userName, userPhone, droneNo, rentalSDate, rentalEDate, price)
+		VALUES(#{rentalNo}, #{userId}, #{userName}, #{userPhone}, #{droneNo}, #{rentalSDate}, #{rentalEDate}, #{price});
+	</insert>
+	
+	<insert id="insertDrone" parameterType="ljn.service.RentalVO">
+		INSERT INTO ljn_drone VALUES(#{droneNo}, #{droneName}, #{price})
+	</insert>
+	
+	<select id="droneCheck" resultType="int">
+		SELECT COUNT(*) from ljn_drone WHERE droneName=#{droneName}
+	</select>
+    
+    <select id="rentalCheck" resultType="int">
+    	SELECT COUNT(*) FROM ljn_rental 
+		WHERE droneNo=#{droneNo}
+		AND		
+		(rentalSDate BETWEEN #{rentalSDate} AND #{rentalEDate}
+		OR
+		rentalEDate BETWEEN #{rentalSDate} AND #{rentalEDate})
+    </select>
+    
+    <select id="rentalConfirmList" resultMap="rentalResult">
+    	SELECT rentalNo, userId, userName, userPhone, a.droneNo, rentalSDate, rentalEDate, droneName, a.price
+		FROM ljn_rental a, ljn_drone b
+		WHERE a.droneNo = b.droneNo AND userId=#{userId}
+		ORDER BY rentalNo DESC
+		LIMIT #{startIndex},#{endIndex}
+    </select>
+    
+    <select id="adminConfirmList" resultMap="rentalResult">
+    	SELECT rentalNo, userId, userName, userPhone, a.droneNo, rentalSDate, rentalEDate, droneName, a.price
+		FROM ljn_rental a, ljn_drone b
+		WHERE a.droneNo = b.droneNo 
+		ORDER BY rentalNo DESC
+		LIMIT #{startIndex},#{endIndex}
+    </select>
+    
+    <select id="userRentalTotal" resultType="int">
+		SELECT COUNT(*) total FROM ljn_rental WHERE userId=#{userId}
+	</select>
+	
+	<select id="adminRentalTotal" resultType="int">
+		SELECT COUNT(*) total FROM ljn_rental
+	</select>
+	
+	<delete id="rentalDelete">
+		delete from ljn_rental where rentalNo=#{rentalNo}
+	</delete>
+	
+	<select id="dronePrice" resultType="int">
+		select price from ljn_drone where droneNo=#{droneNo}
+	</select>
+	
+	<select id="droneList" resultMap="rentalResult">
+		SELECT * FROM ljn_drone
+		LIMIT #{startIndex},#{endIndex}
+	</select>
+	
+	<select id="droneCount" resultType="int">
+		SELECT COUNT(*) FROM ljn_drone
+	</select>
+	
+	<delete id="droneDelete">
+		delete from ljn_drone where droneNo=#{droneNo}
+	</delete>
+	
+	<select id="searchDrone" resultMap="rentalResult">	
+		SELECT droneNo, droneName FROM ljn_drone
+		WHERE droneNo IN (
+		SELECT droneNo FROM ljn_drone
+		except
+		SELECT droneNo FROM ljn_rental
+		WHERE
+		(rentalSDate BETWEEN #{rentalSDate} AND #{rentalEDate}
+		OR
+		rentalEDate BETWEEN #{rentalSDate} AND #{rentalEDate})
+		)
+		ORDER BY droneNo
+	</select>
+    
+</mapper>

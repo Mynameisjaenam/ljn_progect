@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.sqlmap.mappers.User_SQL">
+
+<resultMap type="user" id="userResult">
+      <result property="userId" column="userId" />
+      <result property="userPw" column="userPw" />
+      <result property="userName" column="userName" />
+      <result property="userPhone" column="userPhone" />
+      <result property="userEmail" column="userEmail" />
+      <result property="userRole" column="userRole" />
+      <result property="createDate" column="createDate" />
+</resultMap>  
+
+   <!--이름,전화번호 세션값 가져옴  -->
+	<select id="selectUserName" resultType="string">
+		select userName from ljn_user where userId=#{userId}
+	</select>
+   
+	<select id="selectUserPhone" resultType="string">
+		select userPhone from ljn_user where userId=#{userId}
+	</select>
+	
+	<select id="selectUserEmail" resultType="string">
+		select userEmail from ljn_user where userId=#{userId}
+	</select>
+	
+	<select id="userlogin" resultType="int">
+		SELECT COUNT(*) FROM ljn_user WHERE USERID= #{userId} AND USERPW= #{userPw}
+	</select>
+
+	<select id="signUpCount" resultType="int">
+		SELECT COUNT(*) FROM ljn_user WHERE userId=#{userId}
+	</select>
+
+	<insert id="signUpUser" parameterType="ljn.service.UserVO">
+		INSERT INTO ljn_user
+		(userId, userPw, userName, userPhone, userEmail, userRole, createDate)
+		VALUES(#{userId}, #{userPw}, #{userName}, #{userPhone}, #{userEmail}, #{userRole}, now());
+	</insert>
+	
+	<select id="selectUser" resultMap="userResult">
+		select * from ljn_user where userId=#{userId}
+	</select>
+	
+	<update id="updateuserPw">
+		update ljn_user set userPw=#{userPw} where userId=#{userId}
+	</update>
+	
+	<update id="updateuserPhone">
+		update ljn_user set userPhone=#{userPhone} where userId=#{userId}
+	</update>
+	
+	<update id="updateuserEmail">
+		update ljn_user set userEmail=#{userEmail} where userId=#{userId}
+	</update>
+   
+    
+</mapper>
