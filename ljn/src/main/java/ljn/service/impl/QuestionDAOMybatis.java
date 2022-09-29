@@ -86,5 +86,11 @@ public class QuestionDAOMybatis extends EgovAbstractMapper implements QuestionDA
 		System.out.println("===> MyBatis로 selectAnswer() 기능 처리");
 		return selectOne("selectAnswer", vo);
 	}
+
+	@Override
+	public int answerCount(int questionNo) throws Exception {
+		int count = selectOne("answerCount", questionNo);
+		return count;
+	}
 	
 }

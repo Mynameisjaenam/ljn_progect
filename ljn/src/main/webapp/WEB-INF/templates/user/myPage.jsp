@@ -129,12 +129,12 @@ function modifyEmail(){
 											<label for="userId">아이디</label>											
 										</div>
 										
-										<div class="form-floating mb-3">
+										<div class="form-floating mb-3" >
 											<input class="form-control" id="userPw" name="userPw" type="hidden" value="${SessionUserPw}" readonly />
 											<input class="form-control" id="userPw2" name="userPw2" type="password" value="${SessionUserPw}" readonly />
-											<label for="userPw">비밀번호</label>																																		
+											<label for="userPw">비밀번호</label>
 										</div>				
-										<div style="text-align: right">														
+										<div style="text-align: right">
 										<input type="button" style="width:80px; height:40px;" onclick="modifyPw()" class="btn btn-primary btn-sm" value="변경" />		
 										</div>
 										<br>

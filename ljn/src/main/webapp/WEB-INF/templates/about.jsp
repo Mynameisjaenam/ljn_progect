@@ -130,6 +130,94 @@
             </div>
         </section>
         
+        <section class="page-section" id="services">
+        <div id="portfolio">
+            <div class="container-fluid p-0">
+            <h2 class="text-center mt-0">드론 종류</h2>
+            <hr class="divider" />
+                <div class="row g-0">
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone1.jpg" title="Drone1">
+                            <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone1.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+								농업용드론
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone2.jpg" title="Drone2">
+                            <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone2.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+								농업용드론
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone3.jpg" title="Drone3">
+                            <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone3.jpg" alt="..." />
+                            <div class="portfolio-box-caption">                                
+								농업용드론
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone4.jpg" title="Drone4">
+                            <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone4.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+								촬영용드론
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone5.jpg" title="Drone5">
+                            <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone5.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+								촬영용드론
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone6.jpg" title="Drone6">
+                            <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone6.jpg" alt="..." />
+                            <div class="portfolio-box-caption p-3">
+								촬영용드론
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        
+        <section class="page-section" id="services">
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mt-0">1일 대여료</h2>
+                <hr class="divider" />
+                <div class="row gx-4 gx-lg-5">
+                	<div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <h3 class="h4 mb-2">농업용 드론</h3>
+                            <p class="text-muted mb-0">200,000원</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <h3 class="h4 mb-2">촬영용 드론</h3>
+                            <p class="text-muted mb-0">100,000원</p>
+                        </div>
+                    </div>    
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                        </div>
+                    </div>               
+                </div>
+            </div>
+        </section>
+        
         <!-- Call to action-->
         <section class="page-section bg-dark text-white">
             <div class="container px-4 px-lg-5 text-center">

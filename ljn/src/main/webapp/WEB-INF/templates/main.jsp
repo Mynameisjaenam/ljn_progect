@@ -105,74 +105,50 @@
             <div class="container-fluid p-0">
                 <div class="row g-0">
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone1.jpg" title="Drone1">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone1.jpg" title="농업용드론">
                             <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone1.jpg" alt="..." />
                             <div class="portfolio-box-caption">
-                            	<%if(userId != null && userPw != null) {%>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='rentalDate.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} else { %>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='login.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} %>
+                            	농업용드론
                             </div>
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone2.jpg" title="Drone2">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone2.jpg" title="농업용드론">
                             <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone2.jpg" alt="..." />
                             <div class="portfolio-box-caption">
-                            	<%if(userId != null && userPw != null) {%>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='rentalDate.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} else { %>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='login.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} %>
+                            	농업용드론
                             </div>
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone3.jpg" title="Drone3">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone3.jpg" title="농업용드론">
                             <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone3.jpg" alt="..." />
-                            <div class="portfolio-box-caption">                                
-                                <%if(userId != null && userPw != null) {%>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='rentalDate.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} else { %>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='login.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} %>                                
+                            <div class="portfolio-box-caption">    
+                            	농업용드론  
                             </div>
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone4.jpg" title="Drone4">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone4.jpg" title="촬영용드론">
                             <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone4.jpg" alt="..." />
                             <div class="portfolio-box-caption">
-                                <%if(userId != null && userPw != null) {%>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='rentalDate.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} else { %>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='login.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} %>
+                            	촬영용드론
                             </div>
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone5.jpg" title="Drone5">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone5.jpg" title="촬영용드론">
                             <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone5.jpg" alt="..." />
                             <div class="portfolio-box-caption">
-                                <%if(userId != null && userPw != null) {%>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='rentalDate.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} else { %>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='login.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} %>
+                            	촬영용드론
                             </div>
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone6.jpg" title="Drone6">
+                        <a class="portfolio-box" href="resources/assets/img/portfolio/fullsize/drone6.jpg" title="촬영용드론">
                             <img class="img-fluid" src="resources/assets/img/portfolio/thumbnails/drone6.jpg" alt="..." />
                             <div class="portfolio-box-caption p-3">
-                                <%if(userId != null && userPw != null) {%>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='rentalDate.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} else { %>
-                                <input type="button" style="width:80px; height:40px;" onclick="location.href='login.do'" class="btn btn-primary btn-sm" value="대여하기" />
-                                <%} %>
+                            	촬영용드론
                             </div>
                         </a>
                     </div>

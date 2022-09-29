@@ -382,26 +382,37 @@ public class RentalController {
 			Model model, HttpSession session, HttpServletRequest request) throws Exception {					
 		
 		DateFormat format = new SimpleDateFormat("MM/dd/yyyy");	
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");	
+		
+		DateFormat format2 = new SimpleDateFormat("yyyyMMdd");	
+		SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyyMMdd");
 		
 		String sDate = simpleDateFormat.format(rentalSDate);
 		String eDate = simpleDateFormat.format(rentalEDate);
 		
+		String sDate2 = simpleDateFormat2.format(rentalSDate);
+		String eDate2 = simpleDateFormat2.format(rentalEDate);
+		int sD = Integer.parseInt(sDate2);
+		int eD = Integer.parseInt(eDate2);
+		
 		System.out.println(sDate);
 		System.out.println(eDate);
 		
-		vo.setRentalSDate(rentalSDate);
-		vo.setRentalEDate(rentalEDate);
+		System.out.println("sD:"+sD);
+		System.out.println("eD:"+eD);
 		
-		session.setAttribute("SessionrentalSDate", sDate);
-		session.setAttribute("SessionrentalEDate", eDate);
-				
-		model.addAttribute("sDrone", rentalService.searchDrone(vo));
-		
+		if(sD <= eD) {		
+			vo.setRentalSDate(rentalSDate);
+			vo.setRentalEDate(rentalEDate);
+			
+			session.setAttribute("SessionrentalSDate", sDate);
+			session.setAttribute("SessionrentalEDate", eDate);
+					
+			model.addAttribute("sDrone", rentalService.searchDrone(vo));
+		}
 		
 		return "rental/searchDrone";
 	}
 	
 	
-
 }

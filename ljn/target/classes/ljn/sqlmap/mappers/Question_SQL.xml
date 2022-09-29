@@ -66,5 +66,9 @@
 	<select id="selectAnswer" resultMap="questionResult">
 		SELECT * FROM ljn_answer WHERE questionNo=#{questionNo}
 	</select>
+	
+	<select id="answerCount" resultType="int">
+		SELECT COUNT(*) FROM ljn_answer WHERE questionNo=#{questionNo}
+	</select>
     
 </mapper>

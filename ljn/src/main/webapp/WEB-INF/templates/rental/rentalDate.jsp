@@ -27,11 +27,12 @@ $(function() {
     $("#rentalEDate").datepicker({ minDate: 0});
 } );
 
+
 </script>
 
 <body id="page-top">
 
-	<jsp:include page="/WEB-INF/templates/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/templates/header.jsp"></jsp:include>	
 
 	<header class="masthead">
 		<div class="container px-4 px-lg-5 h-100">
@@ -62,7 +63,7 @@ $(function() {
 										
 										<div style="text-align: right">
 											<input type="submit" style="width:80px; height:40px;" class="btn btn-primary btn-sm" value="조회하기" />
-											
+											<!-- <input type="button" style="width:80px; height:40px;" onclick="dateCheck()" class="btn btn-primary btn-sm" value="조회하기" /> -->
 											<input type="button" style="width:80px; height:40px;" onclick="location.href='main.do'" class="btn btn-primary btn-sm" value="취소" />
 										</div>
 									</form>

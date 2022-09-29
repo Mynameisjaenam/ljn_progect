@@ -120,7 +120,7 @@ function adminquestiondelete(a) {
 									<c:forEach var="answerlist" items="${adminAnswerList}">
 										<tr style="color:white">
 											<td>${answerlist.questionNo}</td>
-											<td><a href="adminAnswerList.do?questionNo=${answerlist.questionNo}" >${answerlist.title}</a></td>
+											<td>${answerlist.title}</td>
 											<td>${answerlist.content}</td>
 											<td>${answerlist.userId}</td>											
 											<td>${answerlist.createDate}</td>
@@ -135,13 +135,13 @@ function adminquestiondelete(a) {
 				            <nav aria-label="Page navigation" style="text-align: center;">         
 				               <ul class="pagination justify-content-center">
 				                  <c:if test="${firstPage > pageList }">
-				                     <li><a class="page-link" href="adminQuestionList.do?viewPage=${firstPage - pageList}">이전</a></li>
+				                     <li><a class="page-link" href="adminAnswerList.do?viewPage=${firstPage - pageList}">이전</a></li>
 				                  </c:if>   
 				                  <c:forEach var="i" begin="${firstPage}" end="${lastPage}">                                                
-				                     <li><a class="page-link" href="adminQuestionList.do?viewPage=${i}">${i}</a></li>
+				                     <li><a class="page-link" href="adminAnswerList.do?viewPage=${i}">${i}</a></li>
 				                  </c:forEach>
 				                  <c:if test="${lastPage < totalPage}">
-				                     <li><a class="page-link" href="adminQuestionList.do?viewPage=${firstPage + pageList}">다음</a></li>
+				                     <li><a class="page-link" href="adminAnswerList.do?viewPage=${firstPage + pageList}">다음</a></li>
 				                  </c:if>
 				               </ul>      
 				            </nav> 

@@ -28,4 +28,6 @@ public interface QuestionDAO {
 	
 	QuestionVO selectAnswer(QuestionVO vo) throws Exception;
 	
+	int answerCount(int questionNo) throws Exception;
+	
 }

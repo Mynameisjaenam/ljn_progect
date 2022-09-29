@@ -92,19 +92,6 @@ public class QuestionController {
 	public String selectAnswerForm(QuestionVO vo, Model model, HttpSession session, HttpServletRequest request,
 			@RequestParam(name = "questionNo") int questionNo) throws Exception {
 
-//		int questionNo;
-//		session = request.getSession();
-//		questionNo = (int) session.getAttribute("SessionquestionNo");
-//		vo.setQuestionNo(questionNo);
-//		vo = questionService.selectAnswer(vo);
-
-//		questionService.selectAnswer(questionNo);
-//		model.addAttribute("answer", questionService.selectAnswer(vo));
-
-//		System.out.println(questionNo);
-
-//		session.removeAttribute("SessionquestionNo");
-
 		session.setAttribute("SessionanswerNo", questionNo);
 
 		System.out.println("answer:" + questionNo);
@@ -283,22 +270,31 @@ public class QuestionController {
 	}
 
 	@RequestMapping(value = "/adminAnswerForm.do", method = RequestMethod.GET)
-	public String adminAnswerForm(QuestionVO vo, Model model, HttpSession session, HttpServletRequest request) {
-
+	public String adminAnswerForm(QuestionVO vo, Model model, HttpSession session, HttpServletRequest request) throws Exception {		
+		
 		int questionNo;
 		session = request.getSession();
 		questionNo = (int) session.getAttribute("SessionquestionNo");
 
+		
+		
 		System.out.println("2:" + questionNo);
-
+		
+		
+		
+		
 		vo.setQuestionNo(questionNo);
+		
 
 		return "admin/adminAnswer";
 	}
-
+	
+	@ResponseBody
 	@RequestMapping(value = "/answerInsert.do", method = RequestMethod.GET)
 	public String answerInsert(QuestionVO vo, HttpSession session, HttpServletRequest request) throws Exception {
 
+		String data = "";
+		
 		String userId = "";
 		session = request.getSession();
 		userId = (String) session.getAttribute("SessionUserId");
@@ -306,14 +302,23 @@ public class QuestionController {
 		int questionNo;
 		session = request.getSession();
 		questionNo = (int) session.getAttribute("SessionquestionNo");
+		
+		int count = questionService.answerCount(questionNo);
 
+		System.out.println("count"+count);
+		
+		if(count == 0) {
+		
 		vo.setUserId(userId);
 		vo.setQuestionNo(questionNo);
 		questionService.answerInsert(vo);
 
 		session.removeAttribute("SessionquestionNo");
+		
+		data="ok";
+		}
 
-		return "question/questionForm";
+		return data;
 	}
 
 	@RequestMapping(value = "/adminAnswerList.do")

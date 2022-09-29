@@ -75,5 +75,10 @@ public class QuestionServiceImpl implements QuestionService {
 	public QuestionVO selectAnswer(QuestionVO vo) throws Exception {
 		return questionDAO.selectAnswer(vo);
 	}
+
+	@Override
+	public int answerCount(int questionNo) throws Exception {
+		return questionDAO.answerCount(questionNo);
+	}
 	
 }

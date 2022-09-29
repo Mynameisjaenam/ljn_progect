@@ -27,6 +27,8 @@ function signUp() {
 	var phone = $("#userPhone").val();
 	var email = $("#userEmail").val();
 	
+	var checkPhone = /^[0-9]{11}$/;
+	
 	if(id == "") {
 		alert("아이디를 입력하세요.");
 	} else if(pw1 == "") {
@@ -39,6 +41,9 @@ function signUp() {
 		alert("이름을 입력하세요.")
 	} else if(phone == "") {
 		alert("전화번호를 입력하세요.")
+	} else if(!checkPhone.test(phone)) {
+		alert("전화번호 형식이 올바르지 않습니다.")
+		return false;
 	} else if(email == "") {
 		alert("이메일을 입력하세요.")
 	} else {

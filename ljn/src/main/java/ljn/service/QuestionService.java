@@ -27,5 +27,7 @@ public interface QuestionService {
 	int answerListTotal(QuestionVO vo) throws Exception;
 	
 	QuestionVO selectAnswer(QuestionVO vo) throws Exception;
+	
+	int answerCount(int questionNo) throws Exception;
 
 }

@@ -30,7 +30,8 @@
 
 <link rel="stylesheet" href="/resources/demos/style.css">
 <link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">	
+	
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -78,12 +79,14 @@ function rentaldrone(a) {
 <body id="page-top">
 
 	<jsp:include page="/WEB-INF/templates/header.jsp"></jsp:include>
-
+<br><br><br>
 	<header class="masthead">
 		<div id="con">
-			<div id="rental">
-				<div id="rental_form">
+			<div id="rental">			
+				<div id="rental_form">				
 					<form>
+					<!-- <br><br><br><br><br><br>
+					<br><br><br><br><br><br> -->
 						<h3 class="login" style="letter-spacing: -1px; color:white;">대여가능한 드론</h3>		
 						<input type="hidden" class="form-control" id="rentalSDate" name="rentalSDate" value="${SessionrentalSDate}">
 						<input type="hidden" class="form-control" id="rentalEDate" name="rentalEDate" value="${SessionrentalEDate}">				
@@ -96,8 +99,8 @@ function rentaldrone(a) {
 									<tr>
 										<th scope="col">드론번호</th>
 										<th scope="col">드론종류</th>
+										<th scope="col">드론정보</th>
 										<th scope="col">대여</th>
-										<!-- sdf -->
 									</tr>
 								</thead>
 								<tbody>
@@ -107,8 +110,72 @@ function rentaldrone(a) {
 											<td>${drone.droneName}</td>
 											<td>
 											<c:set var="dno" value="${drone.droneNo}" />
-											<c:if test="${dno eq 1}">											
-												<input type="button" style="width:80px; height:40px; background-color: #CC9966;" class="btn btn-primary btn-sm" onclick="location.href='rentaldrone1.do'" value="대여하기" />																							
+											<c:if test="${dno eq 1}">
+												<div style="float: left; width: 50%;">
+							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone1.jpg" alt="..." />
+							                    </div>
+							                    <div style="float: left; width: 50%;">
+							                    	드론명:농업용드론<br>
+							                    	용도:농약살포용<br>
+							                    	1일대여료:200,000원
+							                    </div>
+											</c:if>
+											<c:if test="${dno eq 2}">
+												<div style="float: left; width: 50%;">
+							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone2.jpg" alt="..." />
+							                    </div>
+							                    <div style="float: left; width: 50%;">
+							                    	드론명:농업용드론<br>
+							                    	용도:농약살포용<br>
+							                    	1일대여료:200,000원
+							                    </div>											
+											</c:if>
+											<c:if test="${dno eq 3}">
+												<div style="float: left; width: 50%;">
+							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone3.jpg" alt="..." />
+							                    </div>
+							                    <div style="float: left; width: 50%;">
+							                    	드론명:농업용드론<br>
+							                    	용도:농약살포용<br>
+							                    	1일대여료:200,000원
+							                    </div>											
+											</c:if>
+											<c:if test="${dno eq 4}">
+												<div style="float: left; width: 50%;">
+							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone4.jpg" alt="..." />
+							                    </div>
+							                    <div style="float: left; width: 50%;">
+							                    	드론명:촬영용드론<br>
+							                    	용도:영상촬영용<br>
+							                    	1일대여료:100,000원
+							                    </div>											
+											</c:if>
+											<c:if test="${dno eq 5}">
+												<div style="float: left; width: 50%;">
+							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone5.jpg" alt="..." />
+							                    </div>
+							                    <div style="float: left; width: 50%;">
+							                    	드론명:촬영용드론<br>
+							                    	용도:영상촬영용<br>
+							                    	1일대여료:100,000원
+							                    </div>											
+											</c:if>
+											<c:if test="${dno eq 6}">
+												<div style="float: left; width: 50%;">
+							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone6.jpg" alt="..." />
+							                    </div>
+							                    <div style="float: left; width: 50%;">
+							                    	드론명:촬영용드론<br>
+							                    	용도:영상촬영용<br>
+							                    	1일대여료:100,000원
+							                    </div>																							
+											</c:if>											
+											</td>
+											
+											<td>
+											<c:set var="dno" value="${drone.droneNo}" />
+											<c:if test="${dno eq 1}">																							
+							                    <input type="button" style="width:80px; height:40px; background-color: #CC9966;" class="btn btn-primary btn-sm" onclick="location.href='rentaldrone1.do'" value="대여하기" />																			
 											</c:if>
 											<c:if test="${dno eq 2}">
 												<input type="button" style="width:80px; height:40px; background-color: #CC9966;" class="btn btn-primary btn-sm" onclick="location.href='rentaldrone2.do'" value="대여하기" />											
@@ -124,8 +191,9 @@ function rentaldrone(a) {
 											</c:if>
 											<c:if test="${dno eq 6}">
 												<input type="button" style="width:80px; height:40px; background-color: #CC9966;" class="btn btn-primary btn-sm" onclick="location.href='rentaldrone6.do'" value="대여하기" />																							
-											</c:if>											
+											</c:if>
 											</td>
+											
 										</tr>
 									</c:forEach>
 								</tbody>

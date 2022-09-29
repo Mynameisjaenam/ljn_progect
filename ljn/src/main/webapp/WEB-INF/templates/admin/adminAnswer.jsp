@@ -55,9 +55,13 @@ function insertAnswer() {
 	       },         
 	       datatype:'JSON',   
 	       success: function(data) {
-	          alert("답글이 등록 되었습니다.");
-	          location = "main.do"
-	       }       
+			  if(data == "ok") {
+		          alert("답글이 등록 되었습니다.");
+		          location = "adminAnswerList.do"
+			  } else {
+				  alert("이미 등록된 답글입니다.");
+			  }
+	       }
 	    });
     }
 }
