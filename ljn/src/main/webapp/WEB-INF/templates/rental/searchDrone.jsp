@@ -97,6 +97,7 @@ function rentaldrone(a) {
 										<th scope="col">드론번호</th>
 										<th scope="col">드론종류</th>
 										<th scope="col">대여</th>
+										<!-- sdf -->
 									</tr>
 								</thead>
 								<tbody>
