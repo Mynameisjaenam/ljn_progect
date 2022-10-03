@@ -19,7 +19,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
-function rentalCancel(){
+function adminrentalCancel(){
 	var pw = $("#userPw").val();
     var pw2 = $("#userPw2").val();
     var resNo = $("#reserveNo").val();
@@ -71,17 +71,17 @@ function rentalCancel(){
 								<div class="col-lg-6">
 									<form id="contactForm" data-sb-form-api-token="API_TOKEN">
 										
-										<input class="form-control" id="userId" name="userId" type="hidden" value="${SessionUserID}" />
-										<input class="form-control" id="userPw" name="userPw" type="hidden" value="${SessionUserPW}" />
+										<input class="form-control" id="userId" name="userId" type="hidden" value="${SessionUserId}" />
+										<input class="form-control" id="userPw" name="userPw" type="hidden" value="${SessionUserPw}" />
 										<input type="hidden" class="size" id="reserveNo" name="reserveNo" value="${SessionrentalNo}" />
 										
 										<div class="form-floating mb-3">											
 											<input class="form-control" id="userPw2" name="userPw2" type="password" />
-											<label for="userPw">비밀번호 입력</label>																																		
+											<label for="userPw2">비밀번호 입력</label>																																		
 										</div>																	
 										
 										<div style="text-align: right">																					
-											<input type="button" style="width:80px; height:40px;" onclick="rentalCancel()" class="btn btn-primary btn-sm" value="취소" />
+											<input type="button" style="width:80px; height:40px;" onclick="adminrentalCancel()" class="btn btn-primary btn-sm" value="취소" />
 										</div>
 									</form>
 								</div>

@@ -126,7 +126,7 @@ function rentaldelete(a) {
 											<td><fmt:formatDate value="${rental.rentalSDate}" pattern="yyyy-MM-dd" /></td>
 											<td><fmt:formatDate value="${rental.rentalEDate}" pattern="yyyy-MM-dd" /></td>
 											<td>${rental.droneName}</td>
-											<td>${rental.price}원</td>
+											<td><fmt:formatNumber value="${rental.price}" pattern="#,###원"/></td>											
 											<td><input type="button" style="width:80px; height:40px; background-color: #CC9966;" class="btn btn-primary btn-sm" onclick="rentaldelete(${rental.rentalNo})" value="취소" /></td>
 										</tr>
 									</c:forEach>

@@ -53,6 +53,31 @@ function rentaldrone(a) {
    });
 }
 
+$(document).ready(function (e){
+	
+	$(document).on("click","img",function(){
+		var path = $(this).attr('src')
+		showImage(path);
+	});
+	
+	function showImage(fileCallPath){
+	    
+	    $(".bigPictureWrapper").css("display","flex").show();
+	    
+	    $(".bigPicture")
+	    .html("<img src='"+fileCallPath+"' >")
+	    .animate({width:'100%', height: '100%'}, 1000);
+	    
+	  }
+	  
+	$(".bigPictureWrapper").on("click", function(e){
+	    $(".bigPicture").animate({width:'0%', height: '0%'}, 1000);
+	    setTimeout(function(){
+	      $('.bigPictureWrapper').hide();
+	    }, 1000);
+	  });
+});
+
 </script>
 
 <style>
@@ -60,8 +85,6 @@ function rentaldrone(a) {
 	width: 600px;
 	height: 600px;
 	margin: 0 auto;
-	/* position: relative; */
-	/* background:#ddd; */
 }
 
 #rental_form {
@@ -75,6 +98,31 @@ function rentaldrone(a) {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+.bigPictureWrapper {
+	position: absolute;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	top:0%;
+	width:100%;
+	height:100%;
+	background-color: gray; 
+	z-index: 100;
+	background:rgba(255,255,255,0.5);
+}
+
+.bigPicture {
+	position: relative;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+		
+.bigPicture img {
+	width:600px;
+}
+
 </style>
 <body id="page-top">
 
@@ -104,73 +152,25 @@ function rentaldrone(a) {
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="drone" items="${sDrone}">
+								
+								<c:forEach var="drone" items="${sDrone}">
 										<tr style="color:white">
 											<td>${drone.droneNo}</td>
 											<td>${drone.droneName}</td>
 											<td>
-											<c:set var="dno" value="${drone.droneNo}" />
-											<c:if test="${dno eq 1}">
-												<div style="float: left; width: 50%;">
-							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone1.jpg" alt="..." />
-							                    </div>
-							                    <div style="float: left; width: 50%;">
-							                    	드론명:농업용드론<br>
-							                    	용도:농약살포용<br>
-							                    	1일대여료:200,000원
-							                    </div>
-											</c:if>
-											<c:if test="${dno eq 2}">
-												<div style="float: left; width: 50%;">
-							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone2.jpg" alt="..." />
-							                    </div>
-							                    <div style="float: left; width: 50%;">
-							                    	드론명:농업용드론<br>
-							                    	용도:농약살포용<br>
-							                    	1일대여료:200,000원
-							                    </div>											
-											</c:if>
-											<c:if test="${dno eq 3}">
-												<div style="float: left; width: 50%;">
-							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone3.jpg" alt="..." />
-							                    </div>
-							                    <div style="float: left; width: 50%;">
-							                    	드론명:농업용드론<br>
-							                    	용도:농약살포용<br>
-							                    	1일대여료:200,000원
-							                    </div>											
-											</c:if>
-											<c:if test="${dno eq 4}">
-												<div style="float: left; width: 50%;">
-							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone4.jpg" alt="..." />
-							                    </div>
-							                    <div style="float: left; width: 50%;">
-							                    	드론명:촬영용드론<br>
-							                    	용도:영상촬영용<br>
-							                    	1일대여료:100,000원
-							                    </div>											
-											</c:if>
-											<c:if test="${dno eq 5}">
-												<div style="float: left; width: 50%;">
-							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone5.jpg" alt="..." />
-							                    </div>
-							                    <div style="float: left; width: 50%;">
-							                    	드론명:촬영용드론<br>
-							                    	용도:영상촬영용<br>
-							                    	1일대여료:100,000원
-							                    </div>											
-											</c:if>
-											<c:if test="${dno eq 6}">
-												<div style="float: left; width: 50%;">
-							                    	<img class="img-fluid" style="width:200px; height:100px;" src="resources/assets/img/portfolio/thumbnails/drone6.jpg" alt="..." />
-							                    </div>
-							                    <div style="float: left; width: 50%;">
-							                    	드론명:촬영용드론<br>
-							                    	용도:영상촬영용<br>
-							                    	1일대여료:100,000원
-							                    </div>																							
-											</c:if>											
-											</td>
+											<div style="float: left; width: 50%;">
+							                	<img class="img-fluid" style="width:200px; height:100px;" src="${pageContext.request.contextPath}/resources/upload/${drone.droneImage}" alt="..." />
+							                </div>
+							                <div style="float: left; width: 50%;">
+							                	드론명:${drone.droneName}<br>
+							                	용도:${drone.droneUsing}<br>
+							                	1일대여료:<fmt:formatNumber value="${drone.price}" pattern="#,###원"/>
+							                </div>
+							                <div class='bigPictureWrapper'>
+											<div class='bigPicture'>
+											</div>
+											</div>											
+											</td>								
 											
 											<td>
 											<c:set var="dno" value="${drone.droneNo}" />
@@ -200,6 +200,7 @@ function rentaldrone(a) {
 							</table>
 						</div>																
 						<br/>
+						
 						
 						<p></p>
 						<br> <input type="button" style="width:100px; height:50px; background-color: #CC9966;" class="btn btn-primary btn-sm" onclick="location.href='main.do'" value="확인" />

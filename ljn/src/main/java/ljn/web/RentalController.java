@@ -1,8 +1,11 @@
 package ljn.web;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import ljn.service.RentalService;
 import ljn.service.RentalVO;
@@ -317,24 +321,54 @@ public class RentalController {
 		return "admin/insertDrone";
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "/insertDrone.do", method = RequestMethod.POST)
-	public String insertDrone(RentalVO vo) throws Exception {
+	public String insertDrone(RentalVO vo, @RequestParam("file") MultipartFile file) throws Exception {
 		
-		String data = "";
+		 String fileRealName = file.getOriginalFilename();
+         long size = file.getSize();
+         
+         System.out.println(file);
+         System.out.println("파일네임:"+fileRealName);
+         System.out.println("파일네임2:"+file.getOriginalFilename());
+
+         String fileExtension = "";
+
+         if (fileRealName != "") {
+            fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
+         }
+
+         String uploadFoler = "C:\\git\\ljn\\ljn_progect\\ljn\\src\\main\\webapp\\resources\\upload";
+
+         UUID uuid = UUID.randomUUID();
+         String[] uuids = uuid.toString().split("-");
+
+         String uniqueName = uuids[0];
+
+         vo.setDroneImage(uniqueName + fileExtension);
+         
+         String data = "";
+ 		
+         int count = rentalService.droneCheck(vo);
+ 		
+         System.out.println(count);
+ 		
+         if(count == 0) {
+        	 rentalService.insertDrone(vo);
+        	 data = "ok";
+         } else if (count >= 1) {
+        	 data = "fail";
+         }
+
+         File saveFile = new File(uploadFoler + "\\" + uniqueName + fileExtension); // 적용 후
+         try {
+            file.transferTo(saveFile);
+         } catch (IllegalStateException e) {
+            e.printStackTrace();
+         } catch (IOException e) {
+            e.printStackTrace();
+         }
 		
-		int count = rentalService.droneCheck(vo);
-		
-		System.out.println(count);
-		
-		if(count == 0) {
-			rentalService.insertDrone(vo);
-			data = "ok";
-		} else if (count >= 1) {
-			data = "fail";
-		}
-		
-		return data;
+		return "main";
 	}
 	
 	@RequestMapping(value = "/droneList.do", method = RequestMethod.GET)
@@ -412,7 +446,7 @@ public class RentalController {
 		}
 		
 		return "rental/searchDrone";
-	}
+	}	
 	
 	
 }

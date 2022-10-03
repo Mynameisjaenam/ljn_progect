@@ -104,15 +104,19 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
-	public String signUp(UserVO vo, 
+	public String signUp(UserVO vo, String userId, 
 			@RequestParam(name = "userPw") String userPw,
 			@RequestParam(name = "userPw2") String userPw2) throws Exception {
 
 		String data = "";
+		
+		int count = userService.signUpCount(userId);
 
-		if (userPw.contentEquals(userPw2)) {
+		if (userPw.contentEquals(userPw2) && count == 0) {
 			userService.signUpUser(vo);
 			data = "ok";
+		} else {
+			data = "fail";
 		}
 
 		return data;

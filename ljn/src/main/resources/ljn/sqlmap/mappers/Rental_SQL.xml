@@ -13,6 +13,8 @@
       <result property="price" column="price" />
       <result property="droneNo" column="droneNo" />
       <result property="droneName" column="droneName" />
+      <result property="droneImage" column="droneImage" />
+      <result property="droneUsing" column="droneUsing" />
 </resultMap>
 
 	<insert id="insertRental" parameterType="ljn.service.RentalVO">
@@ -22,7 +24,7 @@
 	</insert>
 	
 	<insert id="insertDrone" parameterType="ljn.service.RentalVO">
-		INSERT INTO ljn_drone VALUES(#{droneNo}, #{droneName}, #{price})
+		INSERT INTO ljn_drone VALUES(#{droneNo}, #{droneName}, #{price}, #{droneImage}, #{droneUsing})
 	</insert>
 	
 	<select id="droneCheck" resultType="int">
@@ -41,21 +43,21 @@
     <select id="rentalConfirmList" resultMap="rentalResult">
     	SELECT rentalNo, userId, userName, userPhone, a.droneNo, rentalSDate, rentalEDate, droneName, a.price
 		FROM ljn_rental a, ljn_drone b
-		WHERE a.droneNo = b.droneNo AND userId=#{userId}
-		ORDER BY rentalNo DESC
-		LIMIT #{startIndex},#{endIndex}
+		WHERE a.droneNo = b.droneNo AND userId=#{userId} AND rentalEdate >= CURDATE()
+		ORDER BY rentalSDate 
+		LIMIT #{startIndex}, #{endIndex}
     </select>
     
     <select id="adminConfirmList" resultMap="rentalResult">
     	SELECT rentalNo, userId, userName, userPhone, a.droneNo, rentalSDate, rentalEDate, droneName, a.price
 		FROM ljn_rental a, ljn_drone b
 		WHERE a.droneNo = b.droneNo 
-		ORDER BY rentalNo DESC
-		LIMIT #{startIndex},#{endIndex}
+		ORDER BY rentalSDate, rentalEDate, rentalNo 
+		LIMIT #{startIndex}, #{endIndex}
     </select>
     
     <select id="userRentalTotal" resultType="int">
-		SELECT COUNT(*) total FROM ljn_rental WHERE userId=#{userId}
+		SELECT COUNT(*) total FROM ljn_rental WHERE userId=#{userId} AND rentalEDate >= CURDATE()
 	</select>
 	
 	<select id="adminRentalTotal" resultType="int">
@@ -72,7 +74,7 @@
 	
 	<select id="droneList" resultMap="rentalResult">
 		SELECT * FROM ljn_drone
-		LIMIT #{startIndex},#{endIndex}
+		LIMIT #{startIndex}, #{endIndex}
 	</select>
 	
 	<select id="droneCount" resultType="int">
@@ -84,7 +86,7 @@
 	</delete>
 	
 	<select id="searchDrone" resultMap="rentalResult">	
-		SELECT droneNo, droneName FROM ljn_drone
+		SELECT * FROM ljn_drone
 		WHERE droneNo IN (
 		SELECT droneNo FROM ljn_drone
 		except

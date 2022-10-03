@@ -21,11 +21,15 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  
 <script type="text/javascript">
- 
+
 function insertDrone() {
+	
     var dNo = $("#droneNo").val();
     var dName = $("#droneName").val();
     var pri = $("#price").val();
+    var dimage = document.getElementById("droneImage").files[0].name;
+    
+    alert(dimage)
     
     if(dName == ""){
        alert("드론종류를 입력하세요.")
@@ -38,7 +42,8 @@ function insertDrone() {
           data:{
         	 droneNo:dNo,
         	 droneName:dName,
-        	 price:pri
+        	 price:pri,
+        	 droneImage:dimage
           },
           datatype:'JSON',
           
@@ -53,6 +58,33 @@ function insertDrone() {
        });
     }
  }
+ 
+$(document).ready(function (e){
+    
+    $(document).on("click","img",function(){
+       var path = $(this).attr('src')
+       showImage(path);
+    });
+    
+    function showImage(fileCallPath){
+        
+        $(".bigPictureWrapper").css("display","flex").show();
+        
+        $(".bigPicture")
+        .html("<img src='"+fileCallPath+"' >")
+        .animate({width:'100%', height: '100%'}, 1000);
+        
+      }
+      
+    $(".bigPictureWrapper").on("click", function(e){
+        $(".bigPicture").animate({width:'0%', height: '0%'}, 1000);
+        setTimeout(function(){
+          $('.bigPictureWrapper').hide();
+        }, 1000);
+      });
+ });
+ 
+
 
 </script>
 
@@ -75,7 +107,7 @@ function insertDrone() {
 							</div>
 							<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
 								<div class="col-lg-6">
-									<form id="contactForm" data-sb-form-api-token="API_TOKEN">
+									<form enctype="multipart/form-data" id="contactForm" action="insertDrone.do" method="POST" data-sb-form-api-token="API_TOKEN">
 
 										<div class="form-floating mb-3">
 											<input class="form-control" id="droneName" name="droneName" type="text" />
@@ -85,10 +117,21 @@ function insertDrone() {
 										<div class="form-floating mb-3">
 											<input class="form-control" id="price" name="price" type="text" />
 											<label for="price">1일대여료</label>											
-										</div>										
+										</div>
+										
+										<div class="form-floating mb-3">
+											<input class="form-control" id="file" name="file" type="file" accept="image/png, image/jpeg"  />
+											<label for="file">이미지</label>
+										</div>																					
+										
+										<div class="form-floating mb-3">
+											<input class="form-control" id="droneUsing" name="droneUsing" type="text" />
+											<label for="droneUsing">드론용도</label>											
+										</div>				
 										
 										<div style="text-align: right">
-											<input type="button" style="width:80px; height:40px;" onclick="insertDrone()" class="btn btn-primary btn-sm" value="등록하기" />
+											<!-- <input type="button" style="width:80px; height:40px;" onclick="insertDrone()" class="btn btn-primary btn-sm" value="등록하기" /> -->
+											<input type="submit" style="width:80px; height:40px;" onclick="insertDrone()" class="btn btn-primary btn-sm" value="등록하기" />
 											<input type="button" style="width:80px; height:40px;" onclick="location.href='main.do'" class="btn btn-primary btn-sm" value="취소" />
 										</div>
 									</form>

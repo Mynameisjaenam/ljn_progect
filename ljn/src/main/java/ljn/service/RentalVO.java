@@ -18,6 +18,8 @@ public class RentalVO {
 	private Date rentalEDate;
 	private String droneName;
 	private int price;
+	private String droneImage;
+	private String droneUsing;
 	
 
 	private int viewPage = 1;

@@ -67,6 +67,7 @@ function rentaldelete(a) {
 </script>
 
 <style>
+ 
 #rental {
 	width: 600px;
 	height: 600px;
@@ -143,7 +144,7 @@ function rentaldelete(a) {
 				                  <c:if test="${firstPage > pageList }">
 				                     <li><a class="page-link" href="boardList.do?viewPage=${firstPage - pageList}">이전</a></li>
 				                  </c:if>   
-				                  <c:forEach var="i" begin="${firstPage}" end="${lastPage}">                                                
+				                  <c:forEach var="i" begin="${firstPage}" end="${lastPage}">
 				                     <li><a class="page-link" href="boardList.do?viewPage=${i}">${i}</a></li>
 				                  </c:forEach>
 				                  <c:if test="${lastPage < totalPage}">

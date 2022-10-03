@@ -106,6 +106,8 @@ function droneDelete(a) {
 										<th scope="col">드론번호</th>
 										<th scope="col">드론이름</th>
 										<th scope="col">가격</th>
+										<th scope="col">사진</th>
+										<th scope="col">용도</th>
 										<th scope="col">삭제</th>
 									</tr>
 								</thead>
@@ -114,7 +116,9 @@ function droneDelete(a) {
 										<tr style="color:white">
 											<td>${drone.droneNo}</td>
 											<td>${drone.droneName}</td>
-											<td>${drone.price}원</td>
+											<td><fmt:formatNumber value="${drone.price}" pattern="#,###원"/></td>
+											<td><img src="${pageContext.request.contextPath}/resources/upload/${drone.droneImage}" style="width: 100px; height: 70px;"></td>
+											<td>${drone.droneUsing}</td>
 											<td><input type="button" style="width:80px; height:40px; background-color: #CC9966;" class="btn btn-primary btn-sm" onclick="droneDelete(${drone.droneNo})" value="삭제" /></td>
 										</tr>
 									</c:forEach>

@@ -64,8 +64,8 @@ function signUp() {
                if(data == "ok") {
                   alert("회원가입이 완료되었습니다.");               
                   location = "login.do"
-               } else {
-                  alert("입력사항을 다시 확인해 주세요.");
+               } else if(data == "fail") {
+            	  alert("아이디 중복확인을 해주세요.");      
                }
             }
          });

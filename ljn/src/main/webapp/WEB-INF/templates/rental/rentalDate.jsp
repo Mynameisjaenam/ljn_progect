@@ -27,7 +27,6 @@ $(function() {
     $("#rentalEDate").datepicker({ minDate: 0});
 } );
 
-
 </script>
 
 <body id="page-top">
