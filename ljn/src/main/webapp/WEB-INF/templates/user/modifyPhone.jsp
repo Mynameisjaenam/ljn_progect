@@ -19,11 +19,16 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
+var checkPhone = /^[0-9]{11}$/;
+
 function modifyPhone(){
     var phone = $('#userPhone').val();
     if(phone==""){
        alert("변경할 전화번호를 입력하세요.")
-    }else{
+    } else if(!checkPhone.test(phone)) {
+		alert("전화번호 형식이 올바르지 않습니다.")
+		return false;
+	} else{
           $.ajax({
              url:"updatePhone.do",
              type:"POST",
