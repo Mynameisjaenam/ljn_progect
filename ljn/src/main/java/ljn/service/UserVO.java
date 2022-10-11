@@ -12,5 +12,7 @@ public class UserVO {
 	private String userEmail;
 	private String userRole;
 	private String createDate;
+	private String userAddress;
+	private String userAddressNum;
 	
 }

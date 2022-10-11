@@ -14,6 +14,10 @@ public interface UserService {
 	
 	String selectUserEmail(String userId) throws Exception;
 	
+	String selectUserAddressNum(String userId) throws Exception;
+	
+	String selectUserAddress(String userId) throws Exception;
+	
 	UserVO selectUser(String userId);
 	
 	void updateuserPw(UserVO vo);

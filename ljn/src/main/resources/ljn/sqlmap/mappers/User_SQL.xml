@@ -10,7 +10,9 @@
       <result property="userEmail" column="userEmail" />
       <result property="userRole" column="userRole" />
       <result property="createDate" column="createDate" />
-</resultMap>  
+      <result property="userAddress" column="userAddress" />
+      <result property="userAddressNum" column="userAddressNum" />
+</resultMap>
 
    <!--이름,전화번호 세션값 가져옴  -->
 	<select id="selectUserName" resultType="string">
@@ -25,6 +27,14 @@
 		select userEmail from ljn_user where userId=#{userId}
 	</select>
 	
+	<select id="selectUserAddressNum" resultType="string">
+		select userAddressNum from ljn_user where userId=#{userId}
+	</select>
+	
+	<select id="selectUserAddress" resultType="string">
+		select userAddress from ljn_user where userId=#{userId}
+	</select>
+	
 	<select id="userlogin" resultType="int">
 		SELECT COUNT(*) FROM ljn_user WHERE USERID= #{userId} AND USERPW= #{userPw}
 	</select>
@@ -35,8 +45,8 @@
 
 	<insert id="signUpUser" parameterType="ljn.service.UserVO">
 		INSERT INTO ljn_user
-		(userId, userPw, userName, userPhone, userEmail, userRole, createDate)
-		VALUES(#{userId}, #{userPw}, #{userName}, #{userPhone}, #{userEmail}, #{userRole}, now());
+		(userId, userPw, userName, userPhone, userEmail, userRole, createDate, userAddress, userAddressNum)
+		VALUES(#{userId}, #{userPw}, #{userName}, #{userPhone}, #{userEmail}, #{userRole}, now(), #{userAddress}, #{userAddressNum});
 	</insert>
 	
 	<select id="selectUser" resultMap="userResult">

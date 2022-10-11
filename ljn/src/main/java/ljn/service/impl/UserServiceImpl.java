@@ -50,6 +50,16 @@ public class UserServiceImpl implements UserService {
 	public String selectUserEmail(String userId) throws Exception {
 		return userDAO.selectUserEmail(userId);
 	}
+	
+	@Override
+	public String selectUserAddressNum(String userId) throws Exception {
+		return userDAO.selectUserAddressNum(userId);
+	}
+
+	@Override
+	public String selectUserAddress(String userId) throws Exception {
+		return userDAO.selectUserAddress(userId);
+	}
 
 	@Override
 	public void updateuserPw(UserVO vo) {
@@ -70,7 +80,5 @@ public class UserServiceImpl implements UserService {
 	public UserVO selectUser(String userId) {
 		return userDAO.selectUser(userId);
 	}
-
-	
 
 }

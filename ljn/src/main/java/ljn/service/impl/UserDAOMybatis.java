@@ -46,6 +46,16 @@ public class UserDAOMybatis extends EgovAbstractMapper implements UserDAO {
 	public String selectUserEmail(String userId) throws Exception {
 		return selectOne("selectUserEmail", userId);
 	}
+	
+	@Override
+	public String selectUserAddressNum(String userId) throws Exception {
+		return selectOne("selectUserAddressNum", userId);
+	}
+
+	@Override
+	public String selectUserAddress(String userId) throws Exception {
+		return selectOne("selectUserAddress", userId);
+	}
 
 	@Override
 	public void updateuserPw(UserVO vo) {
@@ -65,6 +75,6 @@ public class UserDAOMybatis extends EgovAbstractMapper implements UserDAO {
 	@Override
 	public UserVO selectUser(String userId) {
 	    return selectOne("selectUser", userId);
-	}
+	}	
 
 }

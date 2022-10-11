@@ -163,6 +163,18 @@ function modifyEmail(){
 										</div>
 										<br>
 										
+										<div class="form-floating mb-3">
+											<input class="form-control" id="userAddressNum" name="userAddressNum" type="text" value="${SessionUseruserAddressNum}" readonly /> 
+											<label for="userEmail">우편번호</label>
+										</div>
+										<br>
+										
+										<div class="form-floating mb-3">
+											<input class="form-control" style="width:450px" id="userAddress" name="userAddress" type="text" value="${SessionUseruserAddress}" readonly /> 
+											<label for="userEmail">주소</label>
+										</div>
+										<br>
+										
 										<div style="text-align: right">
 											<input type="button" style="width:80px; height:40px;" onclick="location.href='rentalConfirm.do'" class="btn btn-primary btn-sm" value="대여조회" />
 											<input type="button" style="width:110px; height:40px;" onclick="location.href='myBoardList.do'" class="btn btn-primary btn-sm" value="나의게시글조회" />

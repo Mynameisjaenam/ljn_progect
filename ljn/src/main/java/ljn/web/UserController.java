@@ -62,11 +62,15 @@ public class UserController {
 			String userName = userService.selectUserName(userId);
 			String userPhone = userService.selectUserPhone(userId);
 			String userEmail = userService.selectUserEmail(userId);
+			String userAddressNum = userService.selectUserAddressNum(userId);
+			String userAddress = userService.selectUserAddress(userId);
 			session.setAttribute("SessionUserId", vo.getUserId());
 			session.setAttribute("SessionUserPw", vo.getUserPw());
 			session.setAttribute("SessionUserName", userName);
 			session.setAttribute("SessionUserPhone", userPhone);
 			session.setAttribute("SessionUserEmail", userEmail);
+			session.setAttribute("SessionUseruserAddressNum", userAddressNum);
+			session.setAttribute("SessionUseruserAddress", userAddress);
 			data = "ok";
 		}
 		
@@ -77,6 +81,11 @@ public class UserController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("SessionUserId");
 		session.removeAttribute("SessionUserPw");
+		session.removeAttribute("SessionUserName");
+		session.removeAttribute("SessionUserPhone");
+		session.removeAttribute("SessionUserEmail");
+		session.removeAttribute("SessionUseruserAddressNum");
+		session.removeAttribute("SessionUseruserAddress");
 		return "main";
 	}
 
@@ -127,7 +136,7 @@ public class UserController {
 	      String userId = "";
 	      session = request.getSession();
 	      userId = (String) session.getAttribute("SessionUserId");
-	      model.addAttribute("user", userService.selectUser(userId)); // userId를 user에저장해서 뿌림
+	      model.addAttribute("user", userService.selectUser(userId));
 	      return "user/myPage";
 	}	
 	
